@@ -164,9 +164,34 @@ public class Biblioteca {
 	 *   excepción.
 	 */
 	public Libro libroMasAntiguoDeCategoria(String categoria) {
+		
+		List<Libro> librosCategoria = new ArrayList<>();
+		
+		for(Libro libro : libros ) {
+			if(libro.getCategoria().equals(categoria)) {
+				librosCategoria.add(libro);
+			}
+		}
+			if(librosCategoria.isEmpty()) {
+				return null;
+			}
+			Libro masAntiguo = librosCategoria.get(0);
+			
+			for(Libro libro : librosCategoria) {
+				if(libro.getAnioPublicacion() < masAntiguo.getAnioPublicacion() ) {
+					masAntiguo = libro;
+				}
+			}
+			
+			return masAntiguo;
+		}
+	
+	
+	
+	
 		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar libroMasAntiguoDeCategoria() en Biblioteca");
-	}
+		
+	
 
 	/**
 	 * RETO OPCIONAL (10 pts extra): completar prestarPrimerDisponibleDeCategoria().
@@ -188,6 +213,7 @@ public class Biblioteca {
 	 */
 	public Libro prestarPrimerDisponibleDeCategoria(String categoria) throws LibroNoDisponibleException {
 		// TODO (opcional): reemplazar esta línea por la lógica descrita arriba.
+		
 		throw new UnsupportedOperationException(
 				"TODO opcional: completar prestarPrimerDisponibleDeCategoria() en Biblioteca");
 	}
